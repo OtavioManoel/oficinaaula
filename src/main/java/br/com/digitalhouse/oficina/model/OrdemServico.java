@@ -1,30 +1,30 @@
 package br.com.digitalhouse.oficina.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ordem-servico")
+@Table(name = "ordem_servicos")
 public class OrdemServico {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	@OneToMany
-	@JoinColumn(name ="cliente_id")
+
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
-	
-	@OneToMany
-	@JoinColumn (name ="veiculo_id")
+
+	@ManyToOne
+	@JoinColumn(name = "veiculo_id")
 	private Veiculo veiculo;
-	
-	@Column
+
+
 	private String descricao;
 
 	public OrdemServico() {
@@ -92,6 +92,5 @@ public class OrdemServico {
 			return false;
 		return true;
 	}
-	
-	
+
 }
